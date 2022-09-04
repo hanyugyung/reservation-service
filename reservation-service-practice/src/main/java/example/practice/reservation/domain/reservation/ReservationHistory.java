@@ -10,6 +10,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.ZonedDateTime;
 
+/**
+ * 예약 내역
+ */
 @Entity
 @Table(name = "histories")
 @Getter
@@ -22,26 +25,41 @@ public class ReservationHistory {
     private Long id;
 
     @CreationTimestamp
-    @Column(name = "created-at")
+    @Column(name = "created_at")
     private ZonedDateTime createdAt;
 
     @UpdateTimestamp
-    @Column(name = "updated-at")
+    @Column(name = "updated_at")
     private ZonedDateTime updatedAt;
 
+    /**
+     * 예약 아이템
+     */
     @NotNull
     @Column(name = "item_code")
     private String itemCode;
 
+    /**
+     * 예약 날짜
+     * ex) 2022-09-04
+     */
     @NotNull
-    @Column(name = "reservation-day")
+    @Column(name = "reservation_day")
     private String reservationDay;
 
+    /**
+     * 예약 시작 시간
+     * ex) 0900
+     */
     @NotNull
-    @Column(name = "reservation-start-time")
-    private String reservationStartTime;
+    @Column(name = "start_time")
+    private String startTime;
 
+    /**
+     * 예약 종료 시간
+     * ex) 1800
+     */
     @NotNull
-    @Column(name = "reservation-end-time")
-    private String reservationEndTime;
+    @Column(name = "end_time")
+    private String endTime;
 }

@@ -10,43 +10,54 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.ZonedDateTime;
 
+/**
+ * 예약 정보
+ */
 @Entity
-@Table(name = "schedules")
+@Table(name = "reservation_info")
 @Getter
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class ReservationSchedule {
+public class ReservationInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @CreationTimestamp
-    @Column(name = "created-at")
+    @Column(name = "created_at")
     private ZonedDateTime createdAt;
 
     @UpdateTimestamp
-    @Column(name = "updated-at")
+    @Column(name = "updated_at")
     private ZonedDateTime updatedAt;
 
+    /**
+     * 예약 아이템
+     */
     @NotNull
     @Column(name = "item_code")
     private String itemCode;
 
+    /**
+     * 예약 가능 건수
+     */
     @NotNull
-    @Column(name = "business-day")
-    private Integer businessDay;
+    @Column(name = "possible_count")
+    private Integer possibleCount;
 
+    /**
+     * 예약 시작 시간
+     */
     @NotNull
-    @Column(name = "possible-number")
-    private Integer possibleNumber;
-
-    @NotNull
-    @Column(name = "start-time")
+    @Column(name = "start_time")
     private String startTime;
 
+    /**
+     * 예약 종료 시간
+     */
     @NotNull
-    @Column(name = "end-time")
+    @Column(name = "end_time")
     private String endTime;
 
 }
